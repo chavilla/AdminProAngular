@@ -3,12 +3,11 @@ import { Component, OnInit } from '@angular/core';
 @Component({
   selector: 'app-nofound',
   templateUrl: './nofound.component.html',
-  styles: [
-  ]
+  styleUrls: [ './nofound.component.css' ],
 })
 export class NofoundComponent implements OnInit {
 
-  constructor() { }
+  year: number = new Date().getFullYear();
 
   ngOnInit(): void {
   }
