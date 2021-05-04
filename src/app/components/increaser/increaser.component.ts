@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, EventEmitter, Input, Output, OnInit } from '@angular/core';
 
 @Component({
   selector: 'app-increaser',
@@ -6,25 +6,33 @@ import { Component } from '@angular/core';
   styles: [
   ]
 })
-export class IncreaserComponent  {
+export class IncreaserComponent implements OnInit {
 
-  progress: number;
+  // tslint:disable-next-line: no-inferrable-types
+  @Input() progressValue: number = 40;
+  // tslint:disable-next-line: no-inferrable-types
+  @Input() btnClass: string;
+  @Output() changeValue: EventEmitter<number> = new EventEmitter();
 
-  constructor() {
-    this.progress = 15;
+  ngOnInit(): void {
+   this.btnClass = `btn ${this.btnClass}`;
   }
 
   setValue(value: number): void {
 
-    if (this.progress >= 100 && value >= 0) {
-      this.progress = 100;
+    if (this.progressValue >= 100 && value >= 0) {
+      this.changeValue.emit(100);
+      this.progressValue = 100;
       return;
     }
-    else if (this.progress <= 0 && value <= 0) {
-      this.progress = 0;
+    else if (this.progressValue <= 0 && value <= 0) {
+      this.changeValue.emit(0);
+      this.progressValue = 0;
       return;
     }
-    this.progress = this.progress + value;
+
+    this.progressValue = this.progressValue + value;
+    this.changeValue.emit(this.progressValue);
   }
 
 }

@@ -4,16 +4,16 @@
       <div class="card-body">
         <h4 class="card-title">Striped Progress bar</h4>
         <div class="progress m-t-20">
-          <div class="progress-bar bg-info progress-bar-striped active" style="height:10px; width: 85%;"
-            role="progressbar"> <span class="sr-only">85% Complete
+          <div class="progress-bar bg-info progress-bar-striped active" style="height:10px;"
+            [style.width]="getProgress1" role="progressbar"> <span class="sr-only">85% Complete
               (success)</span> </div>
         </div>
       </div>
       <div class="card-body">
         <h4 class="card-title">Striped Progress bar</h4>
         <div class="progress m-t-20">
-          <div class="progress-bar bg-danger progress-bar-striped active" style="height:10px; width: 85%;"
-            role="progressbar"> <span class="sr-only">85% Complete
+          <div class="progress-bar bg-danger progress-bar-striped active" style="height:10px;"
+            [style.width]="getProgress2" role="progressbar"> <span class="sr-only">85% Complete
               (success)</span> </div>
         </div>
       </div>
@@ -25,7 +25,7 @@
   <div class="col-6">
     <div class="card">
       <div class="card-body">
-       <app-increaser></app-increaser>
+        <app-increaser (changeValue)="progress1=$event" [btnClass]="'btn-info'" [progressValue]="progress1"></app-increaser>
       </div>
     </div>
   </div>
@@ -33,7 +33,7 @@
 
     <div class="card">
       <div class="card-body">
-        2
+        <app-increaser (changeValue)="progress2=$event" [btnClass]="'btn-danger'"  [progressValue]="progress2"></app-increaser>
       </div>
     </div>
   </div>
