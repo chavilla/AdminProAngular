@@ -15,7 +15,7 @@ export class IncreaserComponent implements OnInit {
   @Output() changeValue: EventEmitter<number> = new EventEmitter();
 
   ngOnInit(): void {
-   this.btnClass = `btn ${this.btnClass}`;
+    this.btnClass = `btn ${this.btnClass}`;
   }
 
   setValue(value: number): void {
@@ -32,6 +32,19 @@ export class IncreaserComponent implements OnInit {
     }
 
     this.progressValue = this.progressValue + value;
+    this.changeValue.emit(this.progressValue);
+  }
+
+  onChange(valueChanged: number): void {
+
+    if (valueChanged >= 100) {
+      this.progressValue = 100;
+    } else if (valueChanged >= 0) {
+      this.progressValue = 0;
+    } else {
+      this.progressValue = valueChanged;
+    }
+
     this.changeValue.emit(this.progressValue);
   }
 

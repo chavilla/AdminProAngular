@@ -19,7 +19,7 @@ import { NofoundComponent } from './nofound/nofound.component';
     AuthModule,
     BrowserModule,
     PagesModule,
-    SharedModule,
+    SharedModule
   ],
   providers: [],
   bootstrap: [AppComponent]

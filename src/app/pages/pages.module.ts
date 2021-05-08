@@ -21,9 +21,9 @@ import { ProgressComponent } from './progress/progress.component';
   imports: [
     CommonModule,
     FormsModule,
-    SharedModule,
     RouterModule,
-    ComponentsModule
+    ComponentsModule,
+    SharedModule,
   ],
   exports: [
     DashboardComponent,
